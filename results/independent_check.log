@@ -1,0 +1,87 @@
+== 1. optimal weights by three independent routes (t=1, 8 random intervals)
+  alpha 0.1  |closed-Peano| = 7.19e-39  |closed-RKHS H1| = 6.72e-39  ||R||^2: closed 0.0864179699837305  Peano 0.0864179699837305
+     min weight 0.05293  sum A_k 9.988584328  < t^a/a = 10.0
+     R(e^{+1x}) = 3.67e-40
+     R(e^{-1x}) = 1.84e-40
+     R(1) = 0.0114157  bound max(1-sech(h_k/2)) t^a/a = 0.0966772  h^2 t^a/(8a) = 0.0974626
+  alpha 0.4  |closed-Peano| = 9.93e-40  |closed-RKHS H1| = 4.8e-39  ||R||^2: closed 0.0190322385613234  Peano 0.0190322385613234
+     min weight 0.05237  sum A_k 2.492774897  < t^a/a = 2.5
+     R(e^{+1x}) = -9.18e-41
+     R(e^{-1x}) = 2.3e-41
+     R(1) = 0.0072251  bound max(1-sech(h_k/2)) t^a/a = 0.0241693  h^2 t^a/(8a) = 0.0243656
+  alpha 0.8  |closed-Peano| = 4.18e-40  |closed-RKHS H1| = 1.51e-39  ||R||^2: closed 0.00561040002688106  Peano 0.00561040002688106
+     min weight 0.05164  sum A_k 1.245486508  < t^a/a = 1.25
+     R(e^{+1x}) = -4.59e-41
+     R(e^{-1x}) = 0.0
+     R(1) = 0.00451349  bound max(1-sech(h_k/2)) t^a/a = 0.0120847  h^2 t^a/(8a) = 0.0121828
+== 2. optimality: ||R||^2 grows under perturbations that keep R(e^{-x})=0 (alpha=0.4)
+  perturb A_2 by 1e-3: ||R||^2 - ||R_opt||^2 = 1.06e-7
+  perturb A_2 by -1e-3: ||R||^2 - ||R_opt||^2 = 1.06e-7
+  perturb A_5 by 1e-3: ||R||^2 - ||R_opt||^2 = 3.204e-7
+  perturb A_5 by -1e-3: ||R||^2 - ||R_opt||^2 = 3.204e-7
+  perturb A_8 by 1e-3: ||R||^2 - ||R_opt||^2 = 4.323e-7
+  perturb A_8 by -1e-3: ||R||^2 - ||R_opt||^2 = 4.323e-7
+== 3. constants d_alpha, K_alpha, r*-limits
+  d_0.1 = 0.618013
+  d_0.5 = 0.0339803
+  d_0.9 = 0.00198126
+  alpha 0.3: int_0^500 s^(a-1)B2 = 0.22289268, 2 d_a = 0.22289273
+  alpha 0.7: int_0^500 s^(a-1)B2 = 0.021016898, 2 d_a = 0.021017156
+  K_0.1 partial sums 0.79009597 0.79011204 0.79012127  Aitken limit 0.7901337
+  limit n||R|| at r*=3/(2a+1), a=0.1: 1.14109
+  limit n||R|| at r*=3/(2a+1), a=0.3: 0.741159
+  limit n||R|| at r*=3/(2a+1), a=0.5: 0.53033
+== 4. norm of the error functional, closed form (t=1)
+  n=256  a=0.1: ||R||^2/h^1.2 = 0.788899 ;  (||R||^2 - 0.790134 h^1.2)/h^2 = -0.10427
+          a=0.5: 12||R||^2/h^2 - ln(1/h) = 2.64803
+  n=1024  a=0.1: ||R||^2/h^1.2 = 0.789727 ;  (||R||^2 - 0.790134 h^1.2)/h^2 = -0.10425
+          a=0.5: 12||R||^2/h^2 - ln(1/h) = 2.64804
+  n=4096  a=0.1: ||R||^2/h^1.2 = 0.789999 ;  (||R||^2 - 0.790134 h^1.2)/h^2 = -0.10439
+          a=0.5: 12||R||^2/h^2 - ln(1/h) = 2.64804
+          a=0.9: ||R||^2/h^2 = 0.10416   (limit 1/9.6 = 0.104167)
+          graded r*, a=0.1: n||R|| = 1.14101
+          graded r*, a=0.5: n||R|| = 0.530315
+  table 5 spot check and graded/uniform factors at n=1024; bound/norm ratios
+   a=0.1  uniform 0.01389  graded 0.001114  factor 12.46   bound/norm 10.3
+   a=0.3  uniform 0.002931  graded 0.0007237  factor 4.05   bound/norm 3.58
+   a=0.5  uniform 0.0008725  graded 0.0005178  factor 1.685   bound/norm 1.84
+   a=0.9  uniform 0.0003152  graded 0.0003126  factor 1.008   bound/norm 1.1
+   a=0.1 r=1: EOC(256->1024) = 0.6
+   a=0.1 r=1.5: EOC(256->1024) = 0.876
+   a=0.1 r=2: EOC(256->1024) = 0.989
+   a=0.1 r=2.5: EOC(256->1024) = 0.999
+   n=8 uniform: a=0.1 0.252, a=0.5 0.0784, a=0.9 0.0401 ; graded r*: a=0.1 0.137, a=0.3 0.0903
+== 5. errors for model integrands (uniform mesh, t=1), trapezoid weights by exact moments
+  check exact I(f3), a=0.5: quad 1.46171408619873  Beta 1.46171408619873
+  f1 a=0.1: n=8 opt 0.00704 trap 0.0152 | n=64 opt 0.000123 trap 0.000305 | n=1024 opt 5.39e-7 trap 1.47e-6
+  f1 a=0.5: n=8 opt 0.0039 trap 0.00693 | n=64 opt 6.18e-5 trap 0.000114 | n=1024 opt 2.43e-7 trap 4.53e-7
+  f1 a=0.9: n=8 opt 0.00261 trap 0.00401 | n=64 opt 4.08e-5 trap 6.28e-5 | n=1024 opt 1.59e-7 trap 2.45e-7
+  f2 a=0.5: n=8 opt 0.0183 trap 0.0172 | n=64 opt 0.000304 trap 0.000286 | n=1024 opt 1.22e-6 trap 1.15e-6
+  f3 a=0.5: n=8 opt 0.0055 trap 0.00379 | n=64 opt 0.000146 trap 0.000117 | n=1024 opt 1.2e-6 trap 1.09e-6
+  f4 a=0.5: n=8 opt 3.49e-32 trap 0.00305 | n=64 opt 3.49e-32 trap 5.06e-5 | n=1024 opt 3.49e-32 trap 2.03e-7
+  two-term prediction for f1 at n=1024 (Theorem 6.9): ratio R_opt/R_trap
+   a=0.1  I(f''-f)/I(f'') = 0.313  measured 0.3671  two-term 0.3671   R_opt/pred 1.000115  R_trap/pred 1.000013
+   a=0.5  I(f''-f)/I(f'') = 0.5345  measured 0.5366  two-term 0.5366   R_opt/pred 1.000007  R_trap/pred 1.000001
+   a=0.9  I(f''-f)/I(f'') = 0.6495  measured 0.6495  two-term 0.6495   R_opt/pred 1.0  R_trap/pred 1.0
+== 6. Gauss-Jacobi with weight (t-x)^(a-1), a=0.1, f1, nodes from moments (mp, 60 digits)
+  m=3  GJ error 2.3e-5
+  m=5  GJ error 6.95e-11
+  m=9  GJ error 9.44e-24
+== 7. Abel transform (alpha=1/2), sigma=0.5
+  forward gauss n=8: opt 0.0141 trap 0.015
+  forward hollow n=8: opt 0.00296 trap 0.0037
+  forward cos2 n=8: opt 0.00584 trap 0.00695
+  inversion cos2 n=16 opt: max error 0.000946
+  inversion cos2 n=16 trap: max error 0.00124
+== 8. fractional relaxation y = E_a(-t^a), kappa=1, T=1
+  a=0.8 uniform opt n=16: max error 0.000715
+  a=0.8 graded r=2/a opt n=16: max error 0.000123
+  a=0.8 graded r=2/a trap n=16: max error 0.000363
+  a=0.3 uniform opt n=16: max error 0.0183
+  a=0.3 graded r=2/a opt n=16: max error 0.00107
+  a=0.3 graded r=2/a trap n=16: max error 0.000521
+== 9. relaxation threshold y'' = y/2 (via series, a=0.3 and 0.5)
+  a=0.3  roots of y''-y/2 in [0.05,1]: ['0.5555']
+  a=0.5  roots of y''-y/2 in [0.05,1]: ['0.7833']
+  a=0.8  roots of y''-y/2 in [0.05,1]: []
+done

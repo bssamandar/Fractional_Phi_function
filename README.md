@@ -17,7 +17,7 @@ all numerical experiments of the paper.
 
 ```bash
 pip install -r requirements.txt
-python run_all.py            # all tables, figures, CSV files and checks (about 6 minutes on one core)
+python run_all.py            # all tables, figures, CSV files and checks (about 10 minutes on one core)
 python run_all.py --quick    # only the verification of the theory and the round-off check
 ```
 
@@ -34,6 +34,7 @@ Matplotlib 3.11.2 (`requirements.txt`).
 | `export_csv.py` | raw results as CSV files, written to `results/csv/` |
 | `verify_theory.py` | numerical verification of the theoretical statements, log in `results/verify_theory.log` |
 | `check_roundoff.py` | accuracy of the three representations of the weights in double precision (Remark 4.2), log in `results/check_roundoff.log` |
+| `independent_check.py` | re-derivation of the weights and of the norm without `optquad.py` (Peano-kernel route and reproducing-kernel route in $W_2^1$), and recomputation of sample entries of all tables; log in `results/independent_check.log` |
 | `run_all.py` | runs everything in the right order |
 
 ## How each table and figure is produced
@@ -47,7 +48,10 @@ Matplotlib 3.11.2 (`requirements.txt`).
 | Table 6, Figure 3(a) (forward Abel transform) | `experiments.py 3` | `results/csv/exp3_abel_forward.csv` | `tables/tab_abel_fwd.tex`, `figures/fig_abel.pdf` |
 | Table 7, Figure 3(b,c) (Abel inversion) | `experiments.py 4` | `results/csv/exp4_abel_inversion.csv`, `results/csv/exp4_hollow_profile_n64.csv` | `tables/tab_abel_inv.tex`, `figures/fig_abel.pdf` |
 | Table 8, Figure 4 (fractional relaxation) | `experiments.py 5` | `results/csv/exp5_relaxation.csv` | `tables/tab_relax.tex`, `figures/fig_relax.pdf` |
-| Section 8.1 and the numbers quoted in Sections 4–6 | `verify_theory.py`, `check_roundoff.py` | `results/verify_theory.log`, `results/check_roundoff.log` | – |
+| Section 8.1 and the numbers quoted in Sections 4–6 | `verify_theory.py`, `check_roundoff.py`, `independent_check.py` | `results/verify_theory.log`, `results/check_roundoff.log`, `results/independent_check.log` | – |
+
+The timings in Table 1 depend on the machine and vary by about 10% between runs; all other
+numbers are reproduced exactly.
 
 ## Independence of the verification
 
@@ -57,6 +61,14 @@ the exponential hat functions (adaptive quadrature in the variable $(t-x)^\alpha
 error functional with the numerically integrated $\|\varphi\|_{L_2}$; the extremal function with
 $I(f_*)$ computed by quadrature; the error expansions with exact values of the integrals.
 Reference values use 40–60 significant digits (mpmath).
+
+`independent_check.py` does not import `optquad.py`. It obtains the optimal weights in two further
+ways that do not use the closed form: (i) by minimising the $L_2$ norm of the Peano kernel of the
+error functional, interval by interval, with all integrals computed by quadrature; (ii) as the
+weights of the minimal-norm interpolation algorithm in $W_2^1(0,t)$ with the norm
+$(\|f'\|^2+\|f\|^2)^{1/2}$, from the reproducing kernel $\cosh(\min)\cosh(t-\max)/\sinh t$.
+Both agree with the closed form to about $10^{-38}$. The script then recomputes, with its own
+implementation, sample entries of Tables 2–8 and the constants quoted in Sections 6 and 8.
 
 ## Contact
 

@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """Regenerate every number, table and figure of the manuscript.
 
-    python run_all.py            # everything (about 30-60 minutes on one core)
+    python run_all.py            # everything (about 10 minutes on one core)
     python run_all.py --quick    # only the verification of the theory and the round-off check
 
 Order: experiments (results/*.json) -> figures -> tables -> CSV export ->
-verification of the theoretical statements -> round-off comparison.
+verification of the theoretical statements -> round-off comparison ->
+independent re-derivation (independent_check.py, full run only).
 """
 import os
 import subprocess
@@ -30,6 +31,8 @@ def main():
         run("export_csv.py")
     run("verify_theory.py")
     run("check_roundoff.py")
+    if not quick:
+        run("independent_check.py")
 
 
 if __name__ == "__main__":
