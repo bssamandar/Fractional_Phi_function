@@ -1,0 +1,126 @@
+== 1. three representations of the weights coincide (random nodes, n=10)
+ alpha 0.1  |paper-closed| 7.13e-38  |C-form - closed| 1.4e-39
+ alpha 0.5  |paper-closed| 3.54e-39  |C-form - closed| 2.12e-40
+ alpha 0.9  |paper-closed| 1.06e-39  |C-form - closed| 1.4e-40
+== 2. double series collapse  H(u) = (gamma(a,u) - e^{-2u}E(u))/2
+ a 0.2 u 0.3 -4.59e-41
+ a 0.2 u 1 -6.89e-41
+ a 0.2 u 4 -1.42e-37
+ a 0.7 u 0.3 0.0
+ a 0.7 u 1 -5.74e-42
+ a 0.7 u 4 -6.63e-38
+== 3. exactness: e^{-x}, e^{x}, and exponential splines; not exact for 1, x
+ R(e^-x) = -2.3e-41
+ R(e^x) = 0.0
+ R(1) = 0.0159
+ A_0 - I(s_0) = -1.02e-39
+ A_1 - I(s_1) = 3.34e-39
+ A_2 - I(s_2) = -5.23e-39
+ A_3 - I(s_3) = 3.29e-39
+ A_4 - I(s_4) = -3.01e-40
+ A_5 - I(s_5) = -8.61e-40
+ A_6 - I(s_6) = 9.07e-40
+ A_7 - I(s_7) = 2.93e-40
+ A_8 - I(s_8) = -4.02e-40
+ A_9 - I(s_9) = 1.15e-41
+ A_10 - I(s_10) = 0.0
+== 4. lambda-scaled formula exact for e^{+-lam x}
+ lam=3, R(e^{3.0 x}) = 0.0
+ lam=3, R(e^{-3.0 x}) = 1.15e-41
+== 5. exact norm: series vs quadrature, closed form vs direct
+ a 0.1 t 1  int q^2: series-quad = -7.35e-40
+ a 0.1 t 3  int q^2: series-quad = -5.14e-39
+   ||R|| closed 0.298216390294375  direct 0.298216390294375
+   random nodes: closed 0.441557700779312  direct 0.441557700779312
+ a 0.5 t 1  int q^2: series-quad = -1.15e-41
+ a 0.5 t 3  int q^2: series-quad = 1.38e-40
+   ||R|| closed 0.10124724165515  direct 0.10124724165515
+   random nodes: closed 0.167720228932522  direct 0.167720228932522
+ a 0.9 t 1  int q^2: series-quad = 2.87e-42
+ a 0.9 t 3  int q^2: series-quad = 0.0
+   ||R|| closed 0.0533785182235835  direct 0.0533785182235835
+   random nodes: closed 0.0778358424430803  direct 0.0778358424430803
+== 6. norm = sup: R(f*) / ||f*|| with f* built from g=-phi equals ||phi||  (uniform n=4, a=0.4)
+ R(f*)/||f*|| = 0.177102141548   ||phi|| = 0.177102141548
+== 7. rigorous upper bound vs exact norm (uniform, graded, random)
+ a 0.1 unif 64  ||R|| 0.073132  bound 0.75341  ratio 10.3
+ a 0.1 grad r=2 64  ||R|| 0.018974  bound 0.065366  ratio 3.445
+ a 0.1 random 10  ||R|| 0.44156  bound 4.855  ratio 11.0
+ a 0.5 unif 64  ||R|| 0.011768  bound 0.024381  ratio 2.072
+ a 0.5 grad r=2 64  ||R|| 0.0090198  bound 0.010163  ratio 1.127
+ a 0.5 random 10  ||R|| 0.16772  bound 0.49591  ratio 2.957
+ a 0.9 unif 64  ||R|| 0.0050381  bound 0.0056482  ratio 1.121
+ a 0.9 grad r=2 64  ||R|| 0.0067233  bound 0.0075976  ratio 1.13
+ a 0.9 random 10  ||R|| 0.077836  bound 0.12201  ratio 1.568
+== 8. asymptotics on uniform mesh
+ a 0.1 n 256  ||R||^2/h^(2a+1) = 0.788899  K_a = 0.790134  (||R||^2 - K_a h^(2a+1))/h^2 = -0.104251  -1/(12(1-2a)) = -0.104167
+ a 0.1 n 1024  ||R||^2/h^(2a+1) = 0.789727  K_a = 0.790134  (||R||^2 - K_a h^(2a+1))/h^2 = -0.104183  -1/(12(1-2a)) = -0.104167
+ a 0.1 n 4096  ||R||^2/h^(2a+1) = 0.789999  K_a = 0.790134  (||R||^2 - K_a h^(2a+1))/h^2 = -0.10417  -1/(12(1-2a)) = -0.104167
+ a 0.3 n 256  ||R||^2/h^(2a+1) = 0.553319  K_a = 0.57599  (||R||^2 - K_a h^(2a+1))/h^2 = -0.208341  -1/(12(1-2a)) = -0.208333
+ a 0.3 n 1024  ||R||^2/h^(2a+1) = 0.562969  K_a = 0.57599  (||R||^2 - K_a h^(2a+1))/h^2 = -0.208334  -1/(12(1-2a)) = -0.208333
+ a 0.3 n 4096  ||R||^2/h^(2a+1) = 0.568512  K_a = 0.57599  (||R||^2 - K_a h^(2a+1))/h^2 = -0.208333  -1/(12(1-2a)) = -0.208333
+ a 0.7 n 256  ||R||^2/h^2 = 0.201252  t^(2a-1)/(12(2a-1)) = 0.208333
+ a 0.7 n 1024  ||R||^2/h^2 = 0.204266  t^(2a-1)/(12(2a-1)) = 0.208333
+ a 0.7 n 4096  ||R||^2/h^2 = 0.205997  t^(2a-1)/(12(2a-1)) = 0.208333
+ a 0.9 n 256  ||R||^2/h^2 = 0.104101  t^(2a-1)/(12(2a-1)) = 0.104167
+ a 0.9 n 1024  ||R||^2/h^2 = 0.104145  t^(2a-1)/(12(2a-1)) = 0.104167
+ a 0.9 n 4096  ||R||^2/h^2 = 0.10416  t^(2a-1)/(12(2a-1)) = 0.104167
+ a 0.5 n 256  12||R||^2/h^2 - ln(1/h) = 2.64803
+ a 0.5 n 1024  12||R||^2/h^2 - ln(1/h) = 2.64804
+ a 0.5 n 4096  12||R||^2/h^2 - ln(1/h) = 2.64804
+== 9. graded meshes: rate of ||R|| (a=0.1, r* = 2/(2a+1) = 1.667)
+ r 1  ||R||: ['0.07313', '0.03188', '0.01389']  rate: 0.6
+ r 1.5  ||R||: ['0.02874', '0.00866', '0.002572']  rate: 0.876
+ r 2  ||R||: ['0.01897', '0.004873', '0.001237']  rate: 0.989
+ r 2.5  ||R||: ['0.01775', '0.004452', '0.001114']  rate: 0.999
+== 10. smooth f: bound |R| <= (1-sech(h/2)) ||f''-f|| t^a/a  and  asymptotic  R ~ -(h^2/12) I(f''-f)
+ a 0.1 sin(x)e^x n 64  R_opt/pred 0.655768  R_trap/pred 0.510784  |R_opt|/bound 0.184
+ a 0.1 sin(x)e^x n 1024  R_opt/pred 0.737894  R_trap/pred 0.629131  |R_opt|/bound 0.207
+ a 0.1 sin(x)e^x n 8192  R_opt/pred 0.787043  R_trap/pred 0.698755  |R_opt|/bound 0.221
+ a 0.1 cos(4x) n 64  R_opt/pred 0.499516  R_trap/pred 0.499529  |R_opt|/bound 0.212
+ a 0.1 cos(4x) n 1024  R_opt/pred 0.619737  R_trap/pred 0.619737  |R_opt|/bound 0.263
+ a 0.1 cos(4x) n 8192  R_opt/pred 0.691082  R_trap/pred 0.691082  |R_opt|/bound 0.294
+ a 0.5 sin(x)e^x n 64  R_opt/pred 0.989606  R_trap/pred 0.97398  |R_opt|/bound 0.464
+ a 0.5 sin(x)e^x n 1024  R_opt/pred 0.997307  R_trap/pred 0.99348  |R_opt|/bound 0.468
+ a 0.5 sin(x)e^x n 8192  R_opt/pred 0.999046  R_trap/pred 0.997694  |R_opt|/bound 0.468
+ a 0.5 cos(4x) n 64  R_opt/pred 0.964144  R_trap/pred 0.964168  |R_opt|/bound 0.293
+ a 0.5 cos(4x) n 1024  R_opt/pred 0.990867  R_trap/pred 0.990867  |R_opt|/bound 0.301
+ a 0.5 cos(4x) n 8192  R_opt/pred 0.996767  R_trap/pred 0.996767  |R_opt|/bound 0.303
+ a 0.9 sin(x)e^x n 64  R_opt/pred 0.999831  R_trap/pred 0.999473  |R_opt|/bound 0.551
+ a 0.9 sin(x)e^x n 1024  R_opt/pred 0.999985  R_trap/pred 0.999956  |R_opt|/bound 0.551
+ a 0.9 sin(x)e^x n 8192  R_opt/pred 0.999998  R_trap/pred 0.999993  |R_opt|/bound 0.551
+ a 0.9 cos(4x) n 64  R_opt/pred 0.998722  R_trap/pred 0.998746  |R_opt|/bound 0.16
+ a 0.9 cos(4x) n 1024  R_opt/pred 0.999887  R_trap/pred 0.999887  |R_opt|/bound 0.16
+ a 0.9 cos(4x) n 8192  R_opt/pred 0.999982  R_trap/pred 0.999982  |R_opt|/bound 0.16
+== 11. graded meshes: n ||R|| -> sqrt(r^3 t^(2a+1) / (12 (r(2a+1)-2)));  r = 3/(2a+1) is optimal
+ a 0.1  r 2.5  n||R||: ['1.139766', '1.140758', '1.141006']  limit 1.141089
+ a 0.1  r 3.0  n||R||: ['1.185753', '1.185843', '1.185853']  limit 1.185854
+ a 0.3  r 1.875  n||R||: ['0.7405992', '0.741019', '0.7411239']  limit 0.7411588
+ a 0.3  r 3.0  n||R||: ['0.8964129', '0.8964209', '0.8964214']  limit 0.8964215
+ a 0.5  r 1.5  n||R||: ['0.5300814', '0.530268', '0.5303146']  limit 0.5303301
+ a 0.5  r 3.0  n||R||: ['0.7499931', '0.7499996', '0.75']  limit 0.75
+ a 0.7  r 1.25  n||R||: ['0.4033349', '0.4034106', '0.4034295']  limit 0.4034358
+ a 0.7  r 3.0  n||R||: ['0.6577863', '0.6577931', '0.6577935']  limit 0.6577935
+ a 0.9  r 1.0714  n||R||: ['0.3201263', '0.3201445', '0.320149']  limit 0.3201505
+ a 0.9  r 3.0  n||R||: ['0.592919', '0.5929266', '0.592927']  limit 0.5929271
+== 12. two-term expansion  R = -(h^2/12) I(g) + d_a g(t) h^(2+a) + O(h^3),  d_a = -zeta(-1-a)/(a(a+1))
+ a 0.1  d_a = 0.6180132   I(f''-f)/I(f'') = 0.31303
+   n 64  R_opt/two-term 1.0026469  R_trap/two-term 1.0003128  (R_opt - two-term)/h^3 -0.08488  R_opt/R_trap 0.4019  predicted 0.4009
+   n 256  R_opt/two-term 1.000554  R_trap/two-term 1.0000635  (R_opt - two-term)/h^3 -0.07593  R_opt/R_trap 0.3813  predicted 0.3811
+   n 1024  R_opt/two-term 1.0001152  R_trap/two-term 1.0000128  (R_opt - two-term)/h^3 -0.06666  R_opt/R_trap 0.3671  predicted 0.3671
+   n 4096  R_opt/two-term 1.000024  R_trap/two-term 1.0000026  (R_opt - two-term)/h^3 -0.05819  R_opt/R_trap 0.3568  predicted 0.3568
+ a 0.5  d_a = 0.033980269   I(f''-f)/I(f'') = 0.53453
+   n 64  R_opt/two-term 1.0004097  R_trap/two-term 1.0000674  (R_opt - two-term)/h^3 -0.006632  R_opt/R_trap 0.5431  predicted 0.5429
+   n 256  R_opt/two-term 1.0000549  R_trap/two-term 1.000009  (R_opt - two-term)/h^3 -0.003572  R_opt/R_trap 0.5387  predicted 0.5387
+   n 1024  R_opt/two-term 1.0000071  R_trap/two-term 1.0000012  (R_opt - two-term)/h^3 -0.00185  R_opt/R_trap 0.5366  predicted 0.5366
+   n 4096  R_opt/two-term 1.0000009  R_trap/two-term 1.0000001  (R_opt - two-term)/h^3 -0.000941  R_opt/R_trap 0.5356  predicted 0.5356
+ a 0.9  d_a = 0.0019812608   I(f''-f)/I(f'') = 0.64948
+   n 64  R_opt/two-term 1.0000134  R_trap/two-term 1.0000089  (R_opt - two-term)/h^3 -0.0001432  R_opt/R_trap 0.6497  predicted 0.6497
+   n 256  R_opt/two-term 1.0000014  R_trap/two-term 1.0000007  (R_opt - two-term)/h^3 -6.027e-5  R_opt/R_trap 0.6495  predicted 0.6495
+   n 1024  R_opt/two-term 1.0000001  R_trap/two-term 1.0  (R_opt - two-term)/h^3 -2.208e-5  R_opt/R_trap 0.6495  predicted 0.6495
+   n 4096  R_opt/two-term 1.0  R_trap/two-term 1.0  (R_opt - two-term)/h^3 -7.536e-6  R_opt/R_trap 0.6495  predicted 0.6495
+== 13. relaxation: where does y = E_a(-t^a) satisfy y'' < y/2  (i.e. |y''-y| > |y''|)?
+ a 0.3  y''-y/2 at t=1: -0.149  sign change at t = 0.5555
+ a 0.5  y''-y/2 at t=1: -0.0683  sign change at t = 0.7833
+ a 0.8  y''-y/2 at t=1: 0.08632  sign change at t = none in [0.1,1]
+done

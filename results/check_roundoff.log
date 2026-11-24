@@ -1,0 +1,11 @@
+t=1 n=10 a=0.1  series 9.5e-13  C-form 3.9e-13  PQ-form 2.9e-13  Alg1 2.7e-16
+t=1 n=100 a=0.1  series 1.3e-10  C-form 8.0e-11  PQ-form 8.5e-11  Alg1 4.3e-16
+t=1 n=1000 a=0.1  C-form 1.9e-08  PQ-form 1.9e-08  Alg1 4.2e-16
+t=5 n=10 a=0.1  series 2.9e-08  C-form 7.0e-13  PQ-form 7.1e-13  Alg1 2.6e-16
+t=10 n=10 a=0.1  series 2.9e-01  C-form 6.3e-11  PQ-form 6.3e-11  Alg1 5.6e-16
+t=10 n=100 a=0.1  series 2.2e+02  C-form 1.6e-08  PQ-form 1.6e-08  Alg1 4.3e-16
+t=10 n=10 a=0.5  series 8.4e-01  C-form 6.6e-12  PQ-form 6.6e-12  Alg1 3.4e-16
+t=20 n=10 a=0.1  series 1.3e+16  C-form 2.9e-07  PQ-form 2.9e-07  Alg1 7.2e-16
+t=20 n=20 a=0.5  series 5.2e+16  C-form 1.2e-07  PQ-form 1.2e-07  Alg1 3.4e-16
+scipy roots_jacobi(16, 0.1-1, 0): max rel. err. of 1-z_i 4.0e-14, of weights 1.8e-13
+scipy roots_jacobi(16, 0.5-1, 0): max rel. err. of 1-z_i 6.5e-15, of weights 8.0e-14

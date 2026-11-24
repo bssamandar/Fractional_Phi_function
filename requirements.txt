@@ -1,0 +1,5 @@
+# versions with which the results in the manuscript were produced (Python 3.13.18)
+numpy==2.5.3
+scipy==1.18.1
+mpmath==1.4.1
+matplotlib==3.11.2
