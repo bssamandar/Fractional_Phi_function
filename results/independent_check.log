@@ -59,7 +59,7 @@
   f2 a=0.5: n=8 opt 0.0183 trap 0.0172 | n=64 opt 0.000304 trap 0.000286 | n=1024 opt 1.22e-6 trap 1.15e-6
   f3 a=0.5: n=8 opt 0.0055 trap 0.00379 | n=64 opt 0.000146 trap 0.000117 | n=1024 opt 1.2e-6 trap 1.09e-6
   f4 a=0.5: n=8 opt 3.49e-32 trap 0.00305 | n=64 opt 3.49e-32 trap 5.06e-5 | n=1024 opt 3.49e-32 trap 2.03e-7
-  two-term prediction for f1 at n=1024 (Theorem 6.9): ratio R_opt/R_trap
+  two-term prediction for f1 at n=1024 (Theorem 6.5): ratio R_opt/R_trap
    a=0.1  I(f''-f)/I(f'') = 0.313  measured 0.3671  two-term 0.3671   R_opt/pred 1.000115  R_trap/pred 1.000013
    a=0.5  I(f''-f)/I(f'') = 0.5345  measured 0.5366  two-term 0.5366   R_opt/pred 1.000007  R_trap/pred 1.000001
    a=0.9  I(f''-f)/I(f'') = 0.6495  measured 0.6495  two-term 0.6495   R_opt/pred 1.0  R_trap/pred 1.0

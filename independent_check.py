@@ -2,7 +2,7 @@
 """Independent re-derivation of the main formulas of the paper.
 
 Nothing from optquad.py is imported.  The optimal weights are obtained in three
-ways that do not use the closed form of Theorem 4.2:
+ways that do not use the closed form of Theorem 4.1:
 
   (P) Peano-kernel route.  For f in W_2^{(1,0)} write f = e^{-x}(f(0)+int_0^x e^s v(s) ds),
       v = f'+f.  If R(e^{-x}) = 0 then R(f) = <rho, v>_{L2} with
@@ -10,8 +10,8 @@ ways that do not use the closed form of Theorem 4.2:
       Minimising ||rho|| decouples interval by interval.  All integrals by mp.quad.
   (K) Reproducing-kernel route in H^1(0,t) with the full norm ||f'||^2 + ||f||^2:
       K(x,y) = cosh(min) cosh(t-max) / sinh t, weights = G^{-1} b,  b_i = I(K(., x_i)).
-      This is the minimal-norm interpolation algorithm (Remark 5.4(i)).
-  (C) the closed form of Theorem 4.2, typed in again from the paper.
+      This is the minimal-norm interpolation algorithm (Remark 5.1(i)).
+  (C) the closed form of Theorem 4.1, typed in again from the paper.
 
 It then recomputes a sample of the numbers quoted in the text and in the tables.
 Run:  python independent_check.py      (about 3 minutes)
@@ -46,7 +46,7 @@ def Iquad(f, t, a, X=None):
     return s / a
 
 
-# ---------------------------------------------------------------- (C) closed form, Theorem 4.2
+# ---------------------------------------------------------------- (C) closed form, Theorem 4.1
 def E(a, u):
     return u ** a / a * mp.hyp1f1(a, a + 1, u) if u > 0 else mp.mpf(0)
 
@@ -184,7 +184,7 @@ P("== 3. constants d_alpha, K_alpha, r*-limits")
 for a in ['0.1', '0.5', '0.9']:
     a = mp.mpf(a)
     P("  d_%s = %s" % (a, nstr(-mp.zeta(-1 - a) / (a * (a + 1)), 6)))
-# Lemma 6.7: int_0^inf s^{a-1} B2~(s) ds = 2 d_a
+# Lemma 6.2: int_0^inf s^{a-1} B2~(s) ds = 2 d_a
 for a in ['0.3', '0.7']:
     a = mp.mpf(a)
     B2 = lambda th: th ** 2 - th + mp.mpf(1) / 6
@@ -209,7 +209,7 @@ for a in ['0.1', '0.3', '0.5']:
     a = mp.mpf(a)
     P("  limit n||R|| at r*=3/(2a+1), a=%s: %s" % (a, nstr(mp.mpf(3) / 2 * (2 * a + 1) ** (-1.5), 6)))
 
-# ================================================================ 4. norm asymptotics (Remark 6.6(ii))
+# ================================================================ 4. norm asymptotics (Remark 6.1(ii))
 P("== 4. norm of the error functional, closed form (t=1)")
 
 
@@ -307,7 +307,7 @@ for (nm, a) in [('f1', '0.1'), ('f1', '0.5'), ('f1', '0.9'), ('f2', '0.5'), ('f3
         row.append("n=%d opt %s trap %s" % (n, nstr(eo, 3), nstr(et, 3)))
     P("  %s a=%s: " % (nm, a) + " | ".join(row))
 
-P("  two-term prediction for f1 at n=1024 (Theorem 6.9): ratio R_opt/R_trap")
+P("  two-term prediction for f1 at n=1024 (Theorem 6.5): ratio R_opt/R_trap")
 f = funcs['f1']
 f2d = lambda x: 2 * mp.exp(x) * mp.cos(x)          # f1''
 for a in ['0.1', '0.5', '0.9']:

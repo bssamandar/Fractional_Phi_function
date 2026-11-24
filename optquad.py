@@ -109,7 +109,7 @@ def weights_from_C(X, t, a):
 
 
 # ----------------------------------------------------------------------------
-# Paper's Theorem 1, literally (double series) -- for verification only
+# Theorem 1 of the earlier article (Babaev--Elmurodova, PCAM 2026), literally (double series) -- for verification only
 # ----------------------------------------------------------------------------
 def H_double_series(u, a, tol=None):
     if u == 0:
